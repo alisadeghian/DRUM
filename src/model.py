@@ -110,18 +110,13 @@ class Learner(object):
                                                     state_is_tuple=True))
             init_states.append(self.cells[i].zero_state(tf.shape(self.tails)[0], tf.float32))
 
-
         ##### making backward cells
-
 
             cell_bw = tf.contrib.rnn.LSTMCell(self.rnn_state_size)
             self.cells_bw.append( tf.contrib.rnn.MultiRNNCell(
                                                     [cell_bw] * self.num_layer, 
                                                     state_is_tuple=True))
             init_states_bw.append( self.cells_bw[i].zero_state(tf.shape(self.tails)[0], tf.float32) )
-
-
-
 
         self.rnn_outputs_list = []
 
@@ -166,13 +161,6 @@ class Learner(object):
                                         self.num_operator + 1,
                                         axis=1) 
                                         for rnn_output in self.rnn_outputs_list[i]] )
-
-    
-            # attention_memories: (will be) a list of num_step tensors,
-            # each of size (batch_size, t+1),
-            # where t is the current step (zero indexed).
-            # Each tensor represents the attention over currently populated memory cells. 
-            # self.attention_memories = []
             
             # memories: (will be) a tensor of size (batch_size, t+1, num_entity),
             # where t is the current step (zero indexed)
@@ -181,7 +169,6 @@ class Learner(object):
                              tf.one_hot(
                                     indices=self.tails,
                                     depth=self.num_entity), 1) )
-
 
         self.database = {r: tf.sparse_placeholder(
                             dtype=tf.float32, 
@@ -227,8 +214,6 @@ class Learner(object):
                     self.predictions += memory_read
 
         print(self.rank)
-
-
 
         self.final_loss = - tf.reduce_sum(self.targets * tf.log(tf.maximum(self.predictions, self.thr)), 1)
         
@@ -286,9 +271,9 @@ class Learner(object):
         tt = [0] * len(queries)
         mdb = {r: ([(0,0)], [0.], (self.num_entity, self.num_entity)) 
                 for r in xrange(self.num_operator / 2)}
-        to_fetch = [self.attention_operators, self.attention_memories]
-        fetched = self._run_graph(sess, qq, hh, tt, mdb, to_fetch)
-        return fetched[0], fetched[1]
+        to_fetch = self.attention_operators
+        attention_operators = self._run_graph(sess, qq, hh, tt, mdb, to_fetch)
+        return attention_operators
 
     def get_vocab_embedding(self, sess):
         qq = [[0] * self.num_word]
