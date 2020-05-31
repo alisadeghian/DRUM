@@ -2,7 +2,7 @@
 
 This is the implementation of DRUM, proposed in the following paper:
 
-[DRUM: End-To-End Differentiable Rule Mining On Knowledge Graphs](https://papers.nips.cc/paper/9669-drum-end-to-end-differentiable-rule-mining-on-knowledge-graphs.pdf) [arXive + appendix](https://arxiv.org/abs/1911.00055).
+[DRUM: End-To-End Differentiable Rule Mining On Knowledge Graphs](https://papers.nips.cc/paper/9669-drum-end-to-end-differentiable-rule-mining-on-knowledge-graphs.pdf) -- [\[arXive + appendix\]](https://arxiv.org/abs/1911.00055).
 Ali Sadeghian, Mohammadreza Armandpour, Patrick Ding, Daisy Zhe Wang.
 NeurIPS 2019.
 
