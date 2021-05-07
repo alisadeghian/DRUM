@@ -1,3 +1,5 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/drum-end-to-end-differentiable-rule-mining-on/link-prediction-on-wn18rr)](https://paperswithcode.com/sota/link-prediction-on-wn18rr?p=drum-end-to-end-differentiable-rule-mining-on) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/drum-end-to-end-differentiable-rule-mining-on/link-prediction-on-fb15k-237)](https://paperswithcode.com/sota/link-prediction-on-fb15k-237?p=drum-end-to-end-differentiable-rule-mining-on)
+
 # DRUM: End-To-End Differentiable Rule Mining On Knowledge Graphs 
 
 This is the implementation of DRUM, proposed in the following paper:
