@@ -32,4 +32,4 @@ python eval/get_truths.py datasets/family
 python eval/evaluate.py --preds=exps/demo/test_predictions.txt --truths=datasets/family/truths.pckl
 ```
 
-This code partially borrows from [Neural LP](https://github.com/fanyangxyz/Neural-LP).
+This code partially is borrowed from [Neural LP](https://github.com/fanyangxyz/Neural-LP).
